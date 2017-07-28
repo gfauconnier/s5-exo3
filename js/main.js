@@ -16,9 +16,7 @@ function newProduct() {
     if (!this.validInputs()) {
       var newProd = new product($("input").eq(0).val(), $("input").eq(1).val(), $("input").eq(2).val());
       this.dispalyProduct(newProd);
-      $("input").each(function() {
-        $(this).val("");
-      });
+      $("input").each(function() { $(this).val(""); });
     } else {
       alert("Not all inputs are filled.");
     }
@@ -35,3 +33,9 @@ var newProd = new newProduct();
 $("button").click(function() {
   newProd.createProduct();
 });
+
+$(document).keypress(function(e) {
+  if (e.which == 13) {
+    newProd.createProduct();
+  }
+})
