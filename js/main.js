@@ -7,15 +7,18 @@ function product(productName, productCatch, productDesc) {
 function newProduct() {
   this.validInputs = function() {
     var i = 0;
-    $("form input").each(function() {
+    $("input").each(function() {
       return $(this).val().length ? i : i++;
     });
     return i;
   };
   this.createProduct = function() {
     if (!this.validInputs()) {
-      var newProd = new product($("form input").eq(0).val(), $("form input").eq(1).val(), $("form input").eq(2).val());
+      var newProd = new product($("input").eq(0).val(), $("input").eq(1).val(), $("input").eq(2).val());
       this.dispalyProduct(newProd);
+      $("input").each(function() {
+        $(this).val("");
+      });
     } else {
       alert("Not all inputs are filled.");
     }
